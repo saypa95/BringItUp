@@ -1,9 +1,11 @@
 import Slider from "./slider";
 
 export default class MainSlider extends Slider {
-  constructor({ sliderSelector, nextSelcetor }) {
+  constructor({ sliderSelector, nextSelcetor, prevSelector }) {
     super(sliderSelector);
     this.nextBtns = document.querySelectorAll(nextSelcetor);
+    this.prevBtn = document.querySelectorAll(prevSelector);
+    this.scheduleBtn = document.querySelectorAll(".menu__block-schedule");
   }
 
   showSlide() {
@@ -37,22 +39,43 @@ export default class MainSlider extends Slider {
   }
 
   changeSlide(n) {
-    this.showSlide((this.slideIndex += n));
+    this.slideIndex += n;
+    this.showSlide();
   }
 
-  render() {
+  bindTriggers() {
     this.nextBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
         this.changeSlide(1);
       });
 
-      btn.parentNode.previousElementSibling.addEventListener("click", (e) => {
-        e.preventDefault();
-        this.slideIndex = 0;
-        this.showSlide(this.slideIndex);
-      });
+      btn.parentNode.previousElementSibling.setAttribute("href", "index.html");
     });
 
+    if (this.prevBtn.length != 0) {
+      this.prevBtn.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          this.changeSlide(-1);
+        });
+      });
+    }
+
+    if (this.scheduleBtn.length != 0) {
+      this.scheduleBtn.forEach((item) => {
+        item.setAttribute("href", "index.html");
+        
+        if (window.location.pathname == "/BringItUp/dist/index.html") {
+          item.addEventListener("click", (e) => {
+            this.slideIndex = 5;
+            this.showSlide();
+          });
+        }
+      });
+    }
+  }
+
+  render() {
+    this.bindTriggers();
     this.showSlide();
   }
 }
