@@ -5669,10 +5669,9 @@ function (_Slider) {
 
       if (this.scheduleBtn.length != 0) {
         this.scheduleBtn.forEach(function (item) {
-          item.setAttribute("href", "index.html");
-
           if (window.location.pathname == "/BringItUp/dist/index.html") {
             item.addEventListener("click", function (e) {
+              // e.preventDefault();
               _this2.slideIndex = 5;
 
               _this2.showSlide();
