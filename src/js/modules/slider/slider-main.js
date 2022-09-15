@@ -64,11 +64,11 @@ export default class MainSlider extends Slider {
       this.scheduleBtn.forEach((item) => {
         if (window.location.pathname == "/BringItUp/dist/index.html") {
           item.addEventListener("click", (e) => {
+            e.preventDefault();
+            
             this.slideIndex = 5;
             this.showSlide();
           });
-        } else{
-          item.setAttribute("href", "index.html");
         }
       });
     }
