@@ -5669,14 +5669,12 @@ function (_Slider) {
 
       if (this.scheduleBtn.length != 0) {
         this.scheduleBtn.forEach(function (item) {
-          if (window.location.pathname == "/BringItUp/dist/index.html") {
-            item.addEventListener("click", function (e) {
-              // e.preventDefault();
-              _this2.slideIndex = 5;
+          item.addEventListener("click", function (e) {
+            // e.preventDefault();
+            _this2.slideIndex = 5;
 
-              _this2.showSlide();
-            });
-          }
+            _this2.showSlide();
+          });
         });
       }
     }

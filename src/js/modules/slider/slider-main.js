@@ -62,14 +62,12 @@ export default class MainSlider extends Slider {
 
     if (this.scheduleBtn.length != 0) {
       this.scheduleBtn.forEach((item) => {
-        if (window.location.pathname == "/BringItUp/dist/index.html") {
-          item.addEventListener("click", (e) => {
-            // e.preventDefault();
+        item.addEventListener("click", (e) => {
+          // e.preventDefault();
 
-            this.slideIndex = 5;
-            this.showSlide();
-          });
-        }
+          this.slideIndex = 5;
+          this.showSlide();
+        });
       });
     }
   }
